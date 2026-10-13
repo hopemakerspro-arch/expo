@@ -13,7 +13,7 @@ class Query: SharedObject {
     self.assetMapper = assetMapper
   }
 
-  func eq(_ assetField: AssetField, _ value: EitherOfThree<MediaTypeNext, Int, Bool>) throws -> Query {
+  func eq(_ assetField: AssetField, _ value: EitherOfFour<MediaTypeNext, Int, Bool, MediaSubtypeNext>) throws -> Query {
     let predicate = try AssetFieldPredicateBuilder.buildPredicate(
       assetField: assetField,
       value: value,
@@ -23,7 +23,7 @@ class Query: SharedObject {
     return self
   }
 
-  func within(_ assetField: AssetField, _ values: EitherOfThree<[MediaTypeNext], [Int], [Bool]>) throws -> Query {
+  func within(_ assetField: AssetField, _ values: EitherOfFour<[MediaTypeNext], [Int], [Bool], [MediaSubtypeNext]>) throws -> Query {
     let predicate = try AssetFieldPredicateBuilder.buildPredicate(
       assetField: assetField,
       values: values,

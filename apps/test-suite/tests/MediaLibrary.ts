@@ -808,7 +808,45 @@ export async function test(t: any) {
       }
     });
 
+    if (Platform.OS === 'ios') {
+      t.it('media subtype filter works correctly', async () => {
+        // given
+        const albumName = createAlbumName('media subtype filter');
+        const screenshotAsset = await Asset.create(screenshotPngLocalUri);
+        const plainAsset = await Asset.create(pngFileLocalUri);
+        assetsContainer.push(screenshotAsset, plainAsset);
+        const album = await Album.create(albumName, [screenshotAsset, plainAsset]);
+        albumsContainer.push(album);
+
+        // when
+        const screenshots = await new Query()
+          .album(album)
+          .eq(AssetField.MEDIA_SUBTYPE, MediaSubtype.SCREENSHOT)
+          .exe();
+        const screenshotsOrLivePhotos = await new Query()
+          .album(album)
+          .within(AssetField.MEDIA_SUBTYPE, [MediaSubtype.SCREENSHOT, MediaSubtype.LIVE_PHOTO])
+          .exe();
+        const livePhotos = await new Query()
+          .album(album)
+          .eq(AssetField.MEDIA_SUBTYPE, MediaSubtype.LIVE_PHOTO)
+          .exe();
+
+        // then
+        t.expect(screenshots.map((a) => a.id)).toEqual([screenshotAsset.id]);
+        t.expect(screenshotsOrLivePhotos.map((a) => a.id)).toEqual([screenshotAsset.id]);
+        t.expect(livePhotos).toEqual([]);
+      });
+    }
+
     if (Platform.OS !== 'ios') {
+      t.it('media subtype filter throws', () => {
+        t.expect(() => new Query().eq(AssetField.MEDIA_SUBTYPE, MediaSubtype.SCREENSHOT)).toThrow();
+        t.expect(() =>
+          new Query().within(AssetField.MEDIA_SUBTYPE, [MediaSubtype.SCREENSHOT])
+        ).toThrow();
+      });
+
       t.it('mediatype audio works correctly', async () => {
         // given
         const asset = await Asset.create(mp3FileLocalUri);

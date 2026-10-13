@@ -32,7 +32,15 @@ class AssetFieldPredicateBuilder {
     return NSPredicate(format: "\(assetField.photosKey()) \(symbol) %@", argumentArray: [NSNumber(value: value)])
   }
 
-  static func buildPredicate(assetField: AssetField, value: EitherOfThree<MediaTypeNext, Int, Bool>, symbol: String) throws -> NSPredicate {
+  static func buildPredicate(assetField: AssetField, values: [MediaSubtypeNext]) -> NSPredicate {
+    let mask = values.reduce(PHAssetMediaSubtype()) { $0.union($1.toPHAssetMediaSubtype()) }
+    return NSPredicate(format: "(\(assetField.photosKey()) & %@) != 0", argumentArray: [NSNumber(value: mask.rawValue)])
+  }
+
+  static func buildPredicate(assetField: AssetField, value: EitherOfFour<MediaTypeNext, Int, Bool, MediaSubtypeNext>, symbol: String) throws -> NSPredicate {
+    if let subtype: MediaSubtypeNext = value.get() {
+      return buildPredicate(assetField: assetField, values: [subtype])
+    }
     if let boolVal: Bool = value.get() {
       return buildPredicate(assetField: assetField, value: boolVal, symbol: symbol)
     }
@@ -45,7 +53,10 @@ class AssetFieldPredicateBuilder {
     throw PredicateBuilderException("Unsupported Either type for \(assetField)")
   }
 
-  static func buildPredicate(assetField: AssetField, values: EitherOfThree<[MediaTypeNext], [Int], [Bool]>, symbol: String) throws -> NSPredicate {
+  static func buildPredicate(assetField: AssetField, values: EitherOfFour<[MediaTypeNext], [Int], [Bool], [MediaSubtypeNext]>, symbol: String) throws -> NSPredicate {
+    if let subtypes: [MediaSubtypeNext] = values.get() {
+      return buildPredicate(assetField: assetField, values: subtypes)
+    }
     if let boolValues: [Bool] = values.get() {
       let nsValues = boolValues.map { NSNumber(value: $0) }
       return NSPredicate(format: "\(assetField.photosKey()) \(symbol) %@", argumentArray: [nsValues])

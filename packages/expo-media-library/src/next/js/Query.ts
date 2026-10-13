@@ -1,5 +1,13 @@
+import { UnavailabilityError } from 'expo';
+import { Platform } from 'react-native';
+
 import { NativeAlbum, NativeQuery } from '../native';
-import type { AssetField, AssetFieldValueMap, AssetMetadata, SortDescriptor } from '../types';
+import {
+  AssetField,
+  type AssetFieldValueMap,
+  type AssetMetadata,
+  type SortDescriptor,
+} from '../types';
 import { Asset, type Album } from './AssetAlbum';
 
 /**
@@ -22,6 +30,7 @@ export class Query {
    * @returns The updated query object for chaining.
    */
   eq<T extends AssetField>(field: T, value: AssetFieldValueMap[T]): Query {
+    requireFieldAvailable(field);
     this.nativeQuery.eq(field, value);
     return this;
   }
@@ -33,6 +42,7 @@ export class Query {
    * @returns The updated query object for chaining.
    */
   within<T extends AssetField>(field: T, value: AssetFieldValueMap[T][]): Query {
+    requireFieldAvailable(field);
     this.nativeQuery.within(field, value);
     return this;
   }
@@ -160,5 +170,11 @@ export class Query {
    */
   exeForMetadata(): Promise<AssetMetadata[]> {
     return this.nativeQuery.exeForMetadata();
+  }
+}
+
+function requireFieldAvailable(field: AssetField) {
+  if (field === AssetField.MEDIA_SUBTYPE && Platform.OS !== 'ios') {
+    throw new UnavailabilityError('MediaLibrary', `${field} is only available on iOS`);
   }
 }

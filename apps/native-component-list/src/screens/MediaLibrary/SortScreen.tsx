@@ -16,11 +16,16 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
+  Platform,
 } from 'react-native';
 
 const numColumns = 3;
 const screenWidth = Dimensions.get('window').width;
 const imageSize = screenWidth / numColumns - 8;
+
+const sortFields = Object.values(AssetField).filter(
+  (field) => Platform.OS === 'ios' || field !== AssetField.MEDIA_SUBTYPE
+);
 
 const sortLabels: Record<AssetField, string> = {
   [AssetField.CREATION_TIME]: 'Creation Time',
@@ -30,6 +35,7 @@ const sortLabels: Record<AssetField, string> = {
   [AssetField.WIDTH]: 'Width',
   [AssetField.DURATION]: 'Duration',
   [AssetField.IS_FAVORITE]: 'Is Favorite',
+  [AssetField.MEDIA_SUBTYPE]: 'Media Subtype',
 };
 
 const SortScreen = () => {
@@ -57,6 +63,7 @@ const SortScreen = () => {
           modificationTime: await asset.getModificationTime(),
           duration: await asset.getDuration(),
           isFavorite: await asset.getFavorite(),
+          mediaSubtypes: Platform.OS === 'ios' ? await asset.getMediaSubtypes() : [],
         }))
       );
       setAssets(assetInfos);
@@ -130,6 +137,12 @@ const SortScreen = () => {
                 {item.isFavorite ? 'Yes' : 'No'}
               </Text>
             );
+          case AssetField.MEDIA_SUBTYPE:
+            return (
+              <Text style={styles.assetLabel} numberOfLines={1}>
+                {item.mediaSubtypes.length > 0 ? item.mediaSubtypes.join(', ') : 'none'}
+              </Text>
+            );
 
           default:
             return null;
@@ -139,7 +152,6 @@ const SortScreen = () => {
   );
 
   const cycleSortField = () => {
-    const sortFields = Object.values(AssetField);
     const currentIndex = sortFields.indexOf(sortingBy);
     const nextIndex = (currentIndex + 1) % sortFields.length;
     setSortingBy(sortFields[nextIndex]);
