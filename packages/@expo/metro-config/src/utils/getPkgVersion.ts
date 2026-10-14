@@ -1,4 +1,4 @@
-import JsonFile from '@expo/json-file';
+import JsonFile, { type JSONObject } from '@expo/json-file';
 import { resolveFrom } from '@expo/require-utils';
 
 export function getPkgVersion(
@@ -20,6 +20,10 @@ export function getPkgVersion(
     return null;
   }
 
-  const pkg = JsonFile.read(pkgPath);
-  return pkg && typeof pkg?.version === 'string' ? pkg.version : null;
+  try {
+    const pkg = JsonFile.read(pkgPath);
+    return typeof pkg.version === 'string' ? pkg.version : null;
+  } catch {
+    return null;
+  }
 }
