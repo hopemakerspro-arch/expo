@@ -1,5 +1,24 @@
 # minimal-tester
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies.
+  - expo@58.0.10
+  - expo-brownfield@58.0.13
+  - expo-image@58.0.14
+  - expo-updates@58.0.16
+  - expo-video@58.0.10
+  - expo-apple-authentication@58.0.2
+  - expo-blur@58.0.3
+  - expo-build-properties@58.0.10
+  - expo-camera@58.0.10
+  - expo-dev-client@58.0.13
+  - expo-linear-gradient@58.0.3
+  - expo-splash-screen@58.0.8
+  - expo-status-bar@58.0.3
+
 ## 1.0.3
 
 ### Patch Changes

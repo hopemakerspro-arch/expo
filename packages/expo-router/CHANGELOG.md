@@ -1,5 +1,11 @@
 # Changelog
 
+## 58.0.19
+
+### Patch Changes
+
+- Replace the experimental `unstable_navigationEvents` API with `unstable_performance` and `unstable_PerformanceObserver`. ([#51068](https://github.com/expo/expo/pull/51068) by [@Ubax](https://github.com/Ubax))
+
 ## 58.0.18
 
 ### Patch Changes

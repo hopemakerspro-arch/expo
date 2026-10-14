@@ -1,5 +1,27 @@
 # notification-tester
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies. ([#51480](https://github.com/expo/expo/pull/51480), [#51068](https://github.com/expo/expo/pull/51068), [#47989](https://github.com/expo/expo/pull/47989), [#51426](https://github.com/expo/expo/pull/51426))
+  - @expo/ui@58.0.17
+  - expo-router@58.0.19
+  - expo-sqlite@58.0.13
+  - native-component-list@0.0.4
+  - test-suite@1.0.4
+  - expo@58.0.10
+  - expo-updates@58.0.16
+  - expo-constants@58.0.11
+  - expo-dev-client@58.0.13
+  - expo-device@58.0.5
+  - expo-font@58.0.8
+  - expo-linking@58.0.12
+  - expo-localization@58.0.4
+  - expo-notifications@58.1.3
+  - expo-status-bar@58.0.3
+  - expo-task-manager@58.0.11
+
 ## 1.0.3
 
 ### Patch Changes

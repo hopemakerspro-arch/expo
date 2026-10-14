@@ -1,5 +1,11 @@
 # Changelog
 
+## 58.0.14
+
+### Patch Changes
+
+- Adjust router integration to use `unstable_PerformanceObserver` instead of `unstable_navigationEvents` ([#51068](https://github.com/expo/expo/pull/51068) by [@Ubax](https://github.com/Ubax))
+
 ## 58.0.13
 
 ### Patch Changes

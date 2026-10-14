@@ -1,5 +1,18 @@
 # Changelog
 
+## 58.1.8
+
+### Patch Changes
+
+- [iOS] Added a preview `experiments.swiftPackageManager` app config setting; when enabled, `expo prebuild` sets up iOS with Swift Package Manager instead of CocoaPods, and `expo run:ios` no longer runs `pod install`. ([#51023](https://github.com/expo/expo/pull/51023) by [@chrfalch](https://github.com/chrfalch))
+- Improve error and log coverage in event logs and fix bundle progress, completion, and server lifecycle reporting. ([#51347](https://github.com/expo/expo/pull/51347) by [@kitten](https://github.com/kitten))
+- Bump to `2g@1.0.0` and provide process metadata, such as `port` for commands like `expo start`. ([#51338](https://github.com/expo/expo/pull/51338) by [@kitten](https://github.com/kitten))
+- Add `expo command:events` and `expo command:ps` sub-commands and updated related help texts to reference these commands. ([#51344](https://github.com/expo/expo/pull/51344) by [@kitten](https://github.com/kitten))
+- Updated dependencies. ([#51338](https://github.com/expo/expo/pull/51338))
+  - @expo/metro-config@58.0.13
+  - @expo/metro-file-map@58.0.5
+  - @expo/prebuild-config@58.0.13
+
 ## 58.1.7
 
 ### Patch Changes

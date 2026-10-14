@@ -1,5 +1,11 @@
 # Changelog
 
+## 58.0.13
+
+### Patch Changes
+
+- [iOS] Encode Swift arrays to JS arrays about 35% faster, and Swift sets to JS sets about 25% faster. ([#51496](https://github.com/expo/expo/pull/51496) by [@tsapeta](https://github.com/tsapeta))
+
 ## 58.0.12
 
 ### Patch Changes

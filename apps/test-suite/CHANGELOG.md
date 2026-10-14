@@ -1,5 +1,64 @@
 # test-suite
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies. ([#51480](https://github.com/expo/expo/pull/51480), [#51216](https://github.com/expo/expo/pull/51216), [#51068](https://github.com/expo/expo/pull/51068), [#47989](https://github.com/expo/expo/pull/47989), [#51320](https://github.com/expo/expo/pull/51320), [#51426](https://github.com/expo/expo/pull/51426))
+  - @expo/ui@58.0.17
+  - expo-location@58.0.16
+  - expo-observe@58.0.14
+  - expo-router@58.0.19
+  - expo-sqlite@58.0.13
+  - expo@58.0.10
+  - expo-modules-core@58.0.18
+  - expo-image@58.0.14
+  - expo-file-system@58.0.9
+  - expo-video@58.0.10
+  - expo-app-metrics@58.0.11
+  - expo-application@58.1.1
+  - expo-asset@58.0.14
+  - expo-audio@58.0.9
+  - expo-auth-session@58.0.11
+  - expo-background-fetch@58.0.10
+  - expo-battery@58.0.3
+  - expo-blob@58.0.3
+  - expo-blur@58.0.3
+  - expo-brightness@58.0.2
+  - expo-calendar@58.0.6
+  - expo-camera@58.0.10
+  - expo-cellular@58.0.3
+  - expo-checkbox@58.0.2
+  - expo-clipboard@58.0.3
+  - expo-constants@58.0.11
+  - expo-contacts@58.0.7
+  - expo-crypto@58.0.6
+  - expo-device@58.0.5
+  - expo-eas-client@58.0.2
+  - expo-font@58.0.8
+  - expo-gl@58.0.3
+  - expo-glass-effect@58.0.3
+  - expo-haptics@58.0.6
+  - expo-image-manipulator@58.0.14
+  - expo-image-picker@58.0.10
+  - expo-keep-awake@58.0.3
+  - expo-linear-gradient@58.0.3
+  - expo-linking@58.0.12
+  - expo-localization@58.0.4
+  - expo-media-library@58.0.8
+  - expo-navigation-bar@58.0.4
+  - expo-network@58.0.3
+  - expo-notifications@58.1.3
+  - expo-screen-orientation@58.0.3
+  - expo-secure-store@58.0.2
+  - expo-sms@58.0.2
+  - expo-speech@58.0.3
+  - expo-store-review@58.0.2
+  - expo-system-ui@58.0.5
+  - expo-task-manager@58.0.11
+  - expo-web-browser@58.0.6
+  - @expo/html-elements@58.0.3
+
 ## 1.0.3
 
 ### Patch Changes

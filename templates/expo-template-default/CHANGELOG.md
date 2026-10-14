@@ -1,5 +1,15 @@
 # expo-template-default
 
+## 58.0.19
+
+### Patch Changes
+
+- Update `react-native-reanimated` to 4.7.1, `react-native-safe-area-context` to ~5.10.1, and `react-native-gesture-handler` to ~3.3.0 to match `bundledNativeModules.json`. ([#51488](https://github.com/expo/expo/pull/51488) by [@Kudo](https://github.com/Kudo))
+- Updated dependencies. ([#51480](https://github.com/expo/expo/pull/51480), [#51068](https://github.com/expo/expo/pull/51068), [#51426](https://github.com/expo/expo/pull/51426))
+  - @expo/ui@58.0.17
+  - expo-router@58.0.19
+  - expo@58.0.10
+
 ## 58.0.18
 
 ### Patch Changes
